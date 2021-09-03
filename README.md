@@ -1,6 +1,6 @@
 # IntraGenomic-variability
   
-This repository gathers all scripts and tools to replicate the following study: ADD_REFERENCE
+This repository gathers all scripts, data and information needed to replicate the following study: ADD_REFERENCE
 
 ## Dependencies
 - [cutadapt](https://cutadapt.readthedocs.io/en/stable/)  
