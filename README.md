@@ -13,7 +13,7 @@ This repository gathers all scripts, data and information needed to replicate th
 - [mafft](https://mafft.cbrc.jp/alignment/software/)  
 - [trimAl](http://trimal.cgenomics.org/)  
 - [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/)  
-## in-house dependencies
+### in-house dependencies
 - [multi2linefasta.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/multi2linefasta.py)  
 - [fastaConcat.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/multi2linefasta.py)  
 - [alignmentConsensus.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/alignmentConsensus.py)
