@@ -145,9 +145,7 @@ write.table(file, "data/fig1.tsv", quote=FALSE, sep='\t', row.names=FALSE, col.n
 
 
 #----
-#----
 #---- Figure 1: Boxplots ---------------------------------------------------------------------------
-
 
 ggplot(file, aes(x=method, y=value))+
   geom_boxplot()+
@@ -155,7 +153,6 @@ ggplot(file, aes(x=method, y=value))+
   facet_grid(variable~., scales="free")+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.4))
-
 
 
 (boxplots <- ggplot(file, aes(x=cell, y=value, fill=order))+
@@ -172,8 +169,4 @@ pdf(paste0("plots/Fig1_Boxplot_allVariables_perCell.pdf", sep=""), width=11.69, 
 plot(boxplots)
 dev.off()
 
-
-
 #----
-
-
