@@ -38,6 +38,8 @@ file$to <- factor(file$to, levels=c("Mge17-124_M8R25", "Mge17-124_M8R26", "Mge17
                                         "Vil496_M8R6", "Vil496_M8R7", "Vil496_M8R8", 
                                         "Vil497_M8R28", "Vil497_M8R29", "Vil497_M8R30"))
 
+write.table(file, "data/fig3.tsv", quote=FALSE, sep='\t', row.names=FALSE, col.names=TRUE)
+
 tmp <- c("Mge17-124_M8R25"="springgreen3", "Mge17-124_M8R26"="springgreen3", "Mge17-124_M8R41"="springgreen3", 
          "Mge17-81_M8R10"="steelblue3", "Mge17-81_M8R12"="steelblue3", "Mge17-81_M8R9"="steelblue3", 
          "Mge17-82_M8R15"="steelblue3", "Mge17-82_M8R16"="steelblue3", "Mge17-82_M8R17"="steelblue3", 
