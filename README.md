@@ -15,7 +15,7 @@ This repository gathers all scripts, data and information needed to replicate th
 - [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/)  
 ### in-house dependencies
 - [multi2linefasta.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/multi2linefasta.py)  
-- [fastaConcat.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/multi2linefasta.py)  
+- [fastaConcat.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/fastaConcat.py)  
 - [alignmentConsensus.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/alignmentConsensus.py)
 ### Optional (yet recomended)  
 - [Rstudio](https://rstudio.com/products/rstudio/download/) 
