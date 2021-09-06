@@ -1,0 +1,11 @@
+Sequences have the following name structure: 
+-The taxonomic level at Class level ('Nass' for Nassellaria and 'Spum' for Spumellaria),
+-the primer name with which it was sequenced (S30, S69(f) and d1r), 
+-the cell identifier (Mge17-81, Mge17-82, Vil325 and Vil496), 
+-the replicate identifier and 
+-the well position 
+separated with '_':
+
+class_primer_cell_replicate_well
+
+i.e.; Nass_d1r_Vil325_BC02_A6, Spum_S30_Mge17-81_BC08_C12
