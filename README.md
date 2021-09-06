@@ -21,6 +21,7 @@ This repository gathers all scripts, data and information needed to replicate th
 - [Rstudio](https://rstudio.com/products/rstudio/download/) 
 
 ## Structure of the repository
-The folder **scripts** contains all the scripts used for the analysis and plotting of the figures, order by the figures. Folder **data** is subdivided into: **illumina**, **minion** and **sanger** containing the raw fasta/q files used in this study in the subdirectories **raw**, along with contextualized data in the subdirectories **info**.  
+The folder **scripts** contains all the scripts used for the analysis and plotting of the figures, estructured with subdirectories for each figure.  
+Folder **data** is subdivided into: **illumina**, **minion** and **sanger** containing the raw fasta/q files used in this study in the subdirectories **raw**, along with contextualized data in the subdirectories **info**.  
   
 All scripts should be self-explained and ready to be run. Tested on Ubuntu 20.04.
