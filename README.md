@@ -16,8 +16,9 @@ This repository gathers all scripts, data and information needed to replicate th
 ### in-house dependencies
 - [multi2linefasta.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/multi2linefasta.py)  
 - [fastaConcat.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/fastaConcat.py)  
-- [alignmentConsensus.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/alignmentConsensus.py)
-- [sequenceSelect.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/sequenceSelect.py)
+- [alignmentConsensus.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/alignmentConsensus.py)  
+- [sequenceSelect.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/sequenceSelect.py)  
+- [fastaClean.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/fastaClean.py)  
 ### Optional (yet recomended)  
 - [Rstudio](https://rstudio.com/products/rstudio/download/) 
 
