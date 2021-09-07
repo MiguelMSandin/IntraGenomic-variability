@@ -291,9 +291,12 @@ write.table(taxa$boot, paste0(project_name, dada2_dir, "taxa_boot.tsv"), sep="\t
 write.table(seqtab.nochim, paste0(project_name, dada2_dir, "seqtab_raw.tsv"), sep="\t", quote=FALSE)
 write.table(t(seqtab.nochim), paste0(project_name, dada2_dir, "seqtab.tsv"), sep="\t", quote=FALSE)
 
-
-fasta <- data.frame(name=paste0("asv", seq(1:ncol(seqtab.nochim))), sequence=paste0(colnames(seqtab.nochim)))
+tmp <- paste0("asv", seq(1:ncol(seqtab.nochim)))
+fasta <- data.frame(name=tmp, 
+                    taxo=paste(tmp, apply(taxa$tax, 1, function(x) paste0(x, collapse="|")), sep="|"),
+                    sequence=paste0(colnames(seqtab.nochim)))
 seqinr::write.fasta(sequences=as.list(fasta$sequence), names=fasta$name, nbchar=80, file.out=paste0(project_name, dada2_dir, "ASVs.fasta"))
+seqinr::write.fasta(sequences=as.list(fasta$sequence), names=fasta$taxo, nbchar=80, file.out=paste0(project_name, dada2_dir, "ASVs_taxo.fasta"))
 
 ##### Exporting ASVs + taxonomy + abundance table ############################################
 
