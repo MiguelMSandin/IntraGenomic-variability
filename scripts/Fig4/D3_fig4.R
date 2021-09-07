@@ -101,7 +101,7 @@ write.table(ssim, "data/fig4_similarity.tsv", quote=FALSE, sep='\t', row.names=F
 
 (Sanger <- plot_grid(plotSabun, plotSsim, labels=c("Abundance", "Intracellular simmilarity"), ncol=1, nrow=2))
 
-pdf("plots/Figure4_Intracell_var.pdf", width=11.69, height=8.27, paper='special')
+pdf("plots/Fig4.pdf", width=11.69, height=8.27, paper='special')
 plot(Sanger)
 dev.off()
 
