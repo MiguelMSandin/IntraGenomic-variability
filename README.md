@@ -25,7 +25,7 @@ This repository gathers all scripts, data and information needed to replicate th
   
 ## Structure of the repository
 The folder **scripts** contains all the scripts used for the analysis and plotting of the figures, estructured with subdirectories for each figure.  
-Folder **data** is subdivided into: **illumina**, **minion** and **sanger** (containing the raw fasta/q files used in this study: TO BE UPLOADED along with the accession number at the permanent repository ENA) in the subdirectories **raw**, along with contextualized data in the subdirectories **info**.  
+Folder **data** is subdivided into: **illumina**, **minion** and **sanger** (containing the raw fasta/q files used in this study: TO BE UPLOADED along with the permanent accession number at the repository ENA) in the subdirectories **raw**, along with contextualized data in the subdirectories **info**.  
   
 All scripts should be self-explained and ready to be run. Tested on Ubuntu 20.04.
   
