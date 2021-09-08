@@ -1,0 +1,378 @@
+#!/usr/bin/perl
+# License information
+$license =
+  " \
+    Copyright (C) 2017-2018 Johan Bengtsson-Palme\
+    \
+    This is a slightly modified script, please cite original script instead\
+";
+
+## OPTIONS:
+$options = "\
+-i {file} : DNA FASTA alignment\
+-t {file} : Mothur output table\
+-o {file} : Consensus output file\
+
+-K {integer} : Minimal number of sequence entries within an OTU in order to keep it\
+-X {ratio} : Threshold for gaps, 0.8 by default\
+-Z {ratio} : Threshold for character inclusion, 0.3 by default\
+-U {ratio} : Threshold for setting characters to uppercase in the consensus sequence, 0.95 by default\
+-L {ratio} : Threshold for inclusion in the consensus sequence, if below the character will be set to '.', 0.7 by default\
+-G {T or F} : Gaps can be most common nucleotide (this option does not override the -X option), off (F) by default\
+-R {T or F} : Remove gaps ('-') in the consensus output, off (F) by default\
+-T {T or F} : If true, IUPAC ambigious bases are ignored and instead the most common nucleotide is included in the consensus at each position, off (F) by default\
+
+-h : displays this help message\
+--help : displays this help message\
+--license : displays licensing information\
+";
+
+## Setup default variable values
+$K = 10;
+$X = 0.8;
+$Z = 0.3;
+$U = 0.95;
+$L = 0.7;
+$G = 0;
+$R = 0;
+$T = 0;
+
+$mothur = "";
+$fasta_in = "";
+$output = "";
+
+## Read command-line options
+for ($i = 0; $i <= scalar(@ARGV); $i++) { # Goes through the list of arguments
+  $arg = @ARGV[$i];		# Stores the current argument in $arg
+
+  if ($arg eq "-i") {		# Read input files from -i flag
+    $i++;
+    $fasta_in = @ARGV[$i];
+  }
+  if ($arg eq "-o") {		# Read output directory from -o flag
+    $i++;
+    $output = @ARGV[$i];
+  }
+  if ($arg eq "-t") {		# Read mothur table file from -t flag
+    $i++;
+    $mothur = @ARGV[$i];
+  }
+
+  if (($arg eq "-K") || ($arg eq "--otu_cutoff")) {
+    $i++;
+    $K = @ARGV[$i];
+  }
+  if (($arg eq "-X") || ($arg eq "--gap_cutoff")) {
+    $i++;
+    $X = @ARGV[$i];
+  }
+  if (($arg eq "-Z") || ($arg eq "--character_cutoff")) {
+    $i++;
+    $Z = @ARGV[$i];
+  }
+  if (($arg eq "-U") || ($arg eq "--uppercase")) {
+    $i++;
+    $U = @ARGV[$i];
+  }
+  if (($arg eq "-L") || ($arg eq "--lowercase")) {
+    $i++;
+    $L = @ARGV[$i];
+  }
+  if (($arg eq "-G") || ($arg eq "--allow_gaps")) {
+    $i++;
+    if (substr(@ARGV[$i],0,1) =~ m/^[Ff0]/) { # Check if argument begins with "F", "f", or "0"
+      $G = 0;
+    } else {
+      $G = 1;
+    }
+  }
+  if (($arg eq "-R") || ($arg eq "--remove_gaps")) {
+    $i++;
+    if (substr(@ARGV[$i],0,1) =~ m/^[Ff0]/) { # Check if argument begins with "F", "f", or "0"
+      $R = 0;
+    } else {
+      $R = 1;
+    }
+  }
+  if (($arg eq "-T") || ($arg eq "--no_iupac")) {
+    $i++;
+    if (substr(@ARGV[$i],0,1) =~ m/^[Ff0]/) { # Check if argument begins with "F", "f", or "0"
+      $T = 0;
+    } else {
+      $T = 1;
+    }
+  }
+
+  ## If "-h" or "--help" are among the options, output usage data and options
+  if (($arg eq "-h") || ($arg eq "--help")) {
+    print "Usage: perl consens.pl -i <alignment> -t <mothur table> -o <output file>\nOptions:$options";
+    print "-----------------------------------------------------------------\n";
+    exit;			# Exit 
+  }
+
+  ## If "--bugs" is among the options, output bugs and features information
+  if ($arg eq "--bugs") {
+    print "$bugs\n";
+    exit;			# Exit 
+  }
+
+  ## If "--license" is among the options, output license information
+  if ($arg eq "--license") {
+    print "$license\n";
+    exit;			# Exit 
+  }
+
+  if ($arg eq "--debug") {	# Run  in debug mode
+    $debug = 1;
+  }
+
+}
+
+## SETUP IUPAC TABLE
+
+  $table{"A"} = "A";
+  $table{"C"} = "C";
+  $table{"G"} = "G";
+  $table{"T"} = "T";
+
+  $table{"AG"} = "R";
+  $table{"CT"} = "Y";
+  $table{"GC"} = "S";
+  $table{"AT"} = "W";
+  $table{"GT"} = "K";
+  $table{"AC"} = "M";
+  $table{"GA"} = "R";
+  $table{"TC"} = "Y";
+  $table{"CG"} = "S";
+  $table{"TA"} = "W";
+  $table{"TG"} = "K";
+  $table{"CA"} = "M";
+
+  $table{"CGT"} = "B";
+  $table{"AGT"} = "D";
+  $table{"ACT"} = "H";
+  $table{"ACG"} = "V";
+  $table{"CTG"} = "B";
+  $table{"ATG"} = "D";
+  $table{"ATC"} = "H";
+  $table{"AGC"} = "V";
+  $table{"GTC"} = "B";
+  $table{"GTA"} = "D";
+  $table{"CTA"} = "H";
+  $table{"CGA"} = "V";
+  $table{"GCT"} = "B";
+  $table{"GAT"} = "D";
+  $table{"CAT"} = "H";
+  $table{"CAG"} = "V";
+  $table{"TCG"} = "B";
+  $table{"TAG"} = "D";
+  $table{"TAC"} = "H";
+  $table{"GAC"} = "V";
+  $table{"TGC"} = "B";
+  $table{"TGA"} = "D";
+  $table{"TCA"} = "H";
+  $table{"GCA"} = "V";
+
+if ($mothur eq "") {
+  print STDERR "ERROR! Mothur table is missing. Please supply a mothur output table using the -t option!\n";
+}
+
+if ($fasta_in eq "") {
+  print STDERR "ERROR! Alignment file is missing. Please supply a alignment file using the -i option!\n";
+}
+
+
+open (MOTHUR, $mothur);
+while ($line = <MOTHUR>) {
+  chomp($line);
+  if (substr($line, 0, 5) eq "label") {
+    @otu_names = split('\t', $line);
+  } else {
+    @otus = split('\t', $line);
+    for ($o = 2; $o < scalar(@otus); $o++) {
+      @entries = split(',', @otus[$o]);
+      if (scalar(@entries) >= $K) {
+	push(@save_otus, @otus[$o]);
+	@tmp = scalar(split(',', @otus[$o]));
+	push(@save_names, "@otu_names[$o]_@tmp");
+      }
+    }
+  }
+}
+close MOTHUR;
+
+open (FASTA, $fasta_in);
+while ($line = <FASTA>) {
+  chomp($line);
+  if (substr($line, 0, 1) eq ">") {
+    if (($id ne "") && ($seq ne "")) {
+      $seqs{$id} = $seq;
+    }
+    $id = substr($line, 1);
+    $id =~ s/ .*//;
+    $seq = "";
+  } else {
+    $seq = $seq . $line;
+  }
+}
+close FASTA;
+if (($id ne "") && ($seq ne "")) {
+  $seqs{$id} = $seq;
+}
+
+if ($output ne "") {
+  open (OUT, ">$output");
+}
+
+for ($o = 0; $o < scalar(@save_otus); $o++) {
+  undef @otu_aln;
+  undef @otu_ids;
+  @entries = split(',', @save_otus[$o]);
+  foreach $entry (@entries) {
+    if (defined($seqs{$entry})) {
+      $seq = $seqs{$entry};
+      push(@otu_aln, $seq);
+      push(@otu_ids, $entry);
+    } else {
+      print STDERR "ERROR! Entry $entry could not be found in alignment!\n";
+    }
+  }
+
+  for ($bp = 0; $bp < length(@otu_aln[0]); $bp++) {
+    undef %nt_at_pos;
+    $non_gaps = 0;
+    for ($s = 0; $s < scalar(@otu_aln); $s++) {
+      $nt = uc(substr(@otu_aln[$s], $bp, 1));
+      if ($nt eq "U") {
+	$nt = "T";
+      }
+      if (defined($nt_at_pos{$nt})) {
+	$nt_at_pos{$nt}++;
+      } else {
+	$nt_at_pos{$nt} = 1;
+      }
+      if ($nt =~ m/[A-Z]/) {
+	$non_gaps++;
+      }
+    }
+
+    foreach $nt (keys(%nt_at_pos)) {
+      if (defined($nt_at_pos{$nt})) {
+	$nt_at_pos{$nt} = $nt_at_pos{$nt} / scalar(@otu_aln);
+      } else {
+	$nt_at_pos{$nt} = 0;
+      }
+    }
+
+    @sorted_keys = sort {$nt_at_pos{$b} <=> $nt_at_pos{$a}} keys(%nt_at_pos);
+
+    $possibilities = "";
+    $best_nt = @sorted_keys[0];
+    foreach $nt (@sorted_keys) {
+      if (defined($nt_at_pos{$nt})) {
+	## IF GAPS IS MORE THAN X%, CONSENSUS IS GAP
+	if ($nt eq "-") {
+	  if ($nt_at_pos{$nt} >= $X) {
+	    @consensus[$bp] = "-";
+	    last;
+	  }
+	}
+	if ($nt eq ".") {
+	  if ($nt_at_pos{$nt} >= $X) {
+	    @consensus[$bp] = "-";
+	    last;
+	  }
+	}
+
+	#print STDERR $nt . "\t" . $nt_at_pos{$nt} . " / " . "(1 - " . $non_gaps . " / " . scalar(@otu_aln) . ") > " . $Z . "\n";
+	## ADD TO POSSIBILITIES IF > Z %
+	if ($non_gaps < scalar(@otu_aln)) {
+	  if ($nt_at_pos{$nt}/(1 - $non_gaps / scalar(@otu_aln)) > $Z) {
+	    if ($nt =~ m/[ATGC]/) {
+	      $possibilities = $possibilities . $nt;
+	    }
+	  }
+	} else {
+	  if ($nt_at_pos{$nt} > $Z) {
+	    if ($nt =~ m/[ATGC]/) {
+	      $possibilities = $possibilities . $nt;
+	    }
+	  }
+	}
+      }
+    }
+	
+    if ($possibilities eq "") {
+      if (@consensus[$bp] ne "-") {
+	@consensus[$bp] = ".";
+      }
+    } else {
+      
+      ## DO IUPAC LOOKUP
+      if ($T == 0) {
+	if ($non_gaps < scalar(@otu_aln)) {
+	  if ($nt_at_pos{$best_nt}/(1 - $non_gaps / scalar(@otu_aln)) >= $U) {
+	    @consensus[$bp] = uc(iupac($possibilities));
+	  } else {
+	    if ($nt_at_pos{$best_nt}/(1 - $non_gaps / scalar(@otu_aln)) >= $L) {
+	      @consensus[$bp] = lc(iupac($possibilities));
+	    } else {
+	      @consensus[$bp] = ".";
+	    }
+	  }
+	} else {
+	  if ($nt_at_pos{$best_nt} >= $U) {
+	    @consensus[$bp] = uc(iupac($possibilities));
+	  } else {
+	    if ($nt_at_pos{$best_nt} >= $L) {
+	      @consensus[$bp] = lc(iupac($possibilities));
+	    } else {
+	      @consensus[$bp] = ".";
+	    }
+	  }
+	}
+      } else {
+	if ($G == 0) {
+	  if ($best_nt eq "-") {
+	    $best_nt = @sorted_keys[1];
+	  }
+	}
+	@consensus[$bp] = $best_nt;
+      }    
+    }
+  }
+
+  if ($output ne "") {
+    print OUT ">" . @save_names[$o] . "\n";
+    for ($bp = 0; $bp < length(@otu_aln[0]); $bp++) {
+      if (($R == 0) || (@consensus[$bp] ne "-")) {
+	print OUT @consensus[$bp];
+      }
+    }
+    print OUT "\n";
+  } else {
+    print ">" . @save_names[$o] . "\n";
+    for ($bp = 0; $bp < length(@otu_aln[0]); $bp++) {
+      if (($R == 0) || (@consensus[$bp] ne "-")) {
+	print @consensus[$bp];
+      }
+    }
+    print "\n";
+  }
+}
+
+if ($output ne "") {
+  close OUT;
+}
+
+sub iupac {
+  $possibilities = shift;
+
+  if (length($possibilities) >= 4) {
+    $iupac_char = "N";
+  } else {
+    $iupac_char = $table{$possibilities};
+  }
+     
+  return $iupac_char;
+}
