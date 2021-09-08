@@ -9,6 +9,7 @@ This repository gathers all scripts, data and information needed to replicate th
 - [mafft](https://mafft.cbrc.jp/alignment/software/)  
 - [trimAl](http://trimal.cgenomics.org/)  
 - [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/)  
+- [mothur](https://mothur.org/)  
 - [python](https://www.python.org/)  
     -   **Required modules**: argparse, Bio, sys.  
 - [R](https://www.r-project.org/)  
