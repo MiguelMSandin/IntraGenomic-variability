@@ -30,6 +30,6 @@ This repository gathers all scripts, data and information needed to replicate th
 The folder **scripts** contains all the scripts used for the analysis and plotting of the figures, estructured with subdirectories for each figure.  
 Folder **data** is subdivided into: **illumina**, **minion** and **sanger** containing the raw fasta/q files used in this study (TO BE UPLOADED along with the permanent accession number at the repository ENA) in the subdirectories **raw**. The last folder (**data/info**) contains the contextualized information in order to perform and analyze the raw data (e.g.; tags for demultiplexing).  
   
-All scripts should be self-explained and ready to be run. Tested on Ubuntu 20.04.
+All scripts should be self-explained and ready to be run. Tested on a laptop Ubuntu 20.04, with 4 processors and 16 GB of RAM.
   
   
