@@ -11,7 +11,7 @@ TRIMMED=${ALIGNMENT/.fasta/_trimed$TRIM_THRESHOLD.fasta}
 trimal -in $ALIGNMENT -out $TRIMMED -gt 0.$TRIM_THRESHOLD
 
 # And launching the phylogenetic inference
-BS="100"
+BS="1000"
 THREADS="2"
 
 # In order to replicate a bit the analysis, we perform one inference under the model GTR+CAT
