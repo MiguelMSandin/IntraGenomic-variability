@@ -12,7 +12,7 @@ This repository gathers all scripts, data and information needed to replicate th
 - [mothur](https://mothur.org/)  
 - [consension](https://microbiology.se/software/consension/)  
 - [python](https://www.python.org/)  
-    -   **Required modules**: argparse, Bio, sys.  
+    -   **Required modules**: argparse, Bio, sys, re, statistics, numpy, pandas, math.  
 - [R](https://www.r-project.org/)  
     -   **Required packages**: dada2, Biostrings, ape, magrittr, data.table, dplyr, tidyr, ggplot2, treemapify, seqinr, colorRamps, vegan, circlize, forcats, cowplot, lulu (or mumu) and colorspace.  
 ### in-house dependencies
