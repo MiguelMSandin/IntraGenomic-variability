@@ -15,7 +15,7 @@ This repository gathers all scripts, data and information needed to replicate th
     -   **Required modules**: argparse, Bio, sys, re, statistics, numpy, pandas, math.  
 - [R](https://www.r-project.org/)  
     -   **Required packages**: dada2, Biostrings, ape, magrittr, data.table, dplyr, tidyr, ggplot2, treemapify, seqinr, colorRamps, vegan, circlize, forcats, cowplot, lulu (or mumu) and colorspace.  
-- [aliview](https://ormbunkar.se/aliview/) or other alignment editor software, such as [seaview](http://doua.prabi.fr/software/seaview)  
+- An alignment editor software, such as [aliview](https://ormbunkar.se/aliview/) or [seaview](http://doua.prabi.fr/software/seaview)  
 ### in-house dependencies
 - [multi2linefasta.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/multi2linefasta.py)  
 - [fastaConcat.py](https://github.com/MiguelMSandin/fasta-functions/blob/main/scripts/fastaConcat.py)  
