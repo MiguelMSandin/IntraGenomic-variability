@@ -1,7 +1,7 @@
 # IntraGenomic-variability
   
 This repository gathers all scripts, data and information needed to replicate the following study:  
-Sandin MM, Romac S, Not F (2021) Intra-genomic rDNA gene variability of Nassellaria and Spumellaria (Rhizaria, Radiolaria) assessed by Sanger, MinION and Illumina sequencing. bioRxiv 2021.10.05.463214; doi: [doi.org/10.1101/2021.10.05.463214](https://doi.org/10.1101/2021.10.05.463214)
+Sandin MM, Romac S, Not F (2021) **Intra-genomic rDNA gene variability of Nassellaria and Spumellaria (Rhizaria, Radiolaria) assessed by Sanger, MinION and Illumina sequencing**. bioRxiv 2021.10.05.463214; doi: [doi.org/10.1101/2021.10.05.463214](https://doi.org/10.1101/2021.10.05.463214)
   
 ## Dependencies
 - [cutadapt](https://cutadapt.readthedocs.io/en/stable/)  
@@ -30,7 +30,7 @@ Sandin MM, Romac S, Not F (2021) Intra-genomic rDNA gene variability of Nassella
   
 ## Structure of the repository
 The folder **scripts** contains all the scripts used for the analysis and plotting of the figures, estructured with subdirectories for each figure.  
-Folder **data** is subdivided into: **illumina**, **minion** and **sanger** containing the raw fasta/q files used in this study (TO BE UPLOADED along with the permanent accession number at the repository ENA) in the subdirectories **raw**. The last folder (**data/info**) contains the contextualized information in order to perform and analyze the raw data (e.g.; tags for demultiplexing).  
+Folder **data** is subdivided into: **illumina**, **minion** and **sanger** containing the raw fasta/q files used in this study (to be uploaded along with the permanent accession number at the repository ENA) in the subdirectories **raw**. The last folder (**data/info**) contains the contextualized information in order to perform and analyze the raw data (e.g.; tags for demultiplexing).  
   
 All scripts should be self-explained and ready to be run. Tested on a laptop Ubuntu 20.04, with 4 processors and 16 GB of RAM.
 
