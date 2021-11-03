@@ -30,10 +30,10 @@ Accessible in [fasta-functions](https://github.com/MiguelMSandin/fasta-functions
 - [Rstudio](https://rstudio.com/products/rstudio/download/) 
   
 ## Structure of the repository
-The folder **scripts** contains all the scripts used for the analysis and plotting of the figures, estructured with subdirectories for each figure.  
-Folder **data** is subdivided into: **illumina**, **minion** and **sanger** containing the raw fasta/q files used in this study (to be uploaded along with the DOI at figshare) in the subdirectories **raw**. The last folder (**data/info**) contains the contextualized information in order to perform and analyze the raw data (e.g.; tags for demultiplexing).  
+The folder **scripts** contains all the scripts used for the analysis and plotting of the figures presented in the [study](https://doi.org/10.1101/2021.10.05.463214) mentioned above, estructured with subdirectories for each figure.  
+Folder **data/info** contains the contextualized information in order to perform and analyze the raw data (e.g.; tags for demultiplexing), that can be permanently downloaded from figshare using the following DOI: https://doi.org/10.6084/m9.figshare.16922764.  
   
-All scripts should be self-explained and ready to be run. Tested on a laptop Ubuntu 20.04, with 4 processors and 16 GB of RAM.
+All scripts should be self-explained and ready to be run. Tested on a laptop Ubuntu 20.04, with 4 processors and 16 GB of RAM.  
 
-Raw figures were edited in [inkscape](https://inkscape.org/).
+Raw figures were edited in [inkscape](https://inkscape.org/).  
   
