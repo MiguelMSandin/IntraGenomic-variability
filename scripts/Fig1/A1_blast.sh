@@ -23,6 +23,20 @@ export BLASTDB=$DB
 blastn -num_threads $THREADS -max_target_seqs 100 -evalue 1.00e-10 -query $FILE -out $BLAST_TSV -db $DBnt -outfmt "$OUT_FMT"
 
 
+# For Sanger sequencing data concatenated ----------------------------------------------------------
+
+# Create blast directory
+[ ! -d "data/sanger/blast/" ] && mkdir -p "data/sanger/blast/"
+
+# And set parameters
+FILE="data/sanger/raw/raw_concatenated.fasta"
+BLAST_TSV="data/sanger/blast/raw_concatenated_blast.tsv"
+
+# Run blast
+export BLASTDB=$DB
+blastn -num_threads $THREADS -max_target_seqs 100 -evalue 1.00e-10 -query $FILE -out $BLAST_TSV -db $DBnt -outfmt "$OUT_FMT"
+
+
 # For ONT data -------------------------------------------------------------------------------------
 
 # Define variables and parameters
