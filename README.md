@@ -4,6 +4,10 @@ This repository gathers all scripts, data and information needed to replicate th
 Sandin MM, Romac S, Not F (2021) **Intra-genomic rDNA gene variability of Nassellaria and Spumellaria (Rhizaria, Radiolaria) assessed by Sanger, MinION and Illumina sequencing**. bioRxiv 2021.10.05.463214; doi: [doi.org/10.1101/2021.10.05.463214](https://doi.org/10.1101/2021.10.05.463214)
   
 ## Dependencies
+- [python](https://www.python.org/)  
+    -   **Required modules**: argparse, Bio, sys, re, statistics, numpy, pandas, math.  
+- [R](https://www.r-project.org/)  
+    -   **Required packages**: dada2, Biostrings, ape, magrittr, data.table, dplyr, tidyr, ggplot2, treemapify, seqinr, colorRamps, vegan, circlize, forcats, cowplot, lulu (or mumu) and colorspace.  
 - [cutadapt](https://cutadapt.readthedocs.io/en/stable/)  
 - [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download)  
 - [vsearch](https://github.com/torognes/vsearch)  
@@ -11,13 +15,9 @@ Sandin MM, Romac S, Not F (2021) **Intra-genomic rDNA gene variability of Nassel
 - [trimAl](http://trimal.cgenomics.org/)  
 - [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/)  
 - [mothur](https://mothur.org/)  
+- [consension](https://microbiology.se/software/consension/)  
 - [minimap2](https://github.com/lh3/minimap2)  
 - [Racon](https://github.com/isovic/racon)  
-- [consension](https://microbiology.se/software/consension/)  
-- [python](https://www.python.org/)  
-    -   **Required modules**: argparse, Bio, sys, re, statistics, numpy, pandas, math.  
-- [R](https://www.r-project.org/)  
-    -   **Required packages**: dada2, Biostrings, ape, magrittr, data.table, dplyr, tidyr, ggplot2, treemapify, seqinr, colorRamps, vegan, circlize, forcats, cowplot, lulu (or mumu) and colorspace.  
 - An alignment editor software, such as [aliview](https://ormbunkar.se/aliview/) or [seaview](http://doua.prabi.fr/software/seaview)  
 ### in-house dependencies
 Accessible in [fasta-functions](https://github.com/MiguelMSandin/fasta-functions)  
