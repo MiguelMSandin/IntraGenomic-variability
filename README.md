@@ -11,6 +11,7 @@ Sandin MM, Romac S, Not F (2021) **Intra-genomic rDNA gene variability of Nassel
 - [trimAl](http://trimal.cgenomics.org/)  
 - [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/)  
 - [mothur](https://mothur.org/)  
+- [minimap2](https://github.com/lh3/minimap2)  
 - [Racon](https://github.com/isovic/racon)  
 - [consension](https://microbiology.se/software/consension/)  
 - [python](https://www.python.org/)  
