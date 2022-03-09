@@ -64,7 +64,7 @@ write.table(entropy, "data/files/figS5.tsv", quote=FALSE, sep='\t', row.names=FA
    theme(legend.position="none"))
 
 # Exporting the PDF of the plot
-pdf("plots/FigS5.pdf", width=11.69, height=8.27, paper='special')
+pdf("plots/FigS6.pdf", width=11.69, height=8.27, paper='special')
 plot(dive)
 dev.off()
 # But this graph is too heavy too edit in inkscape, so let's remove all 0 points (without affecting geom_smoot !!)
@@ -79,7 +79,7 @@ dev.off()
     theme(legend.position="none"))
 
 # Exporting the PDF of the plot
-pdf("plots/FigS5_clean.pdf", width=11.69, height=8.27, paper='special')
+pdf("plots/FigS6_clean.pdf", width=11.69, height=8.27, paper='special')
 plot(divep)
 dev.off()
 
