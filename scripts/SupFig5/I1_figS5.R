@@ -5,10 +5,7 @@ library(vegan)
 library(tidyr)
 library(circlize)
 
-system("mkdir data/illumina/lulu")
 setwd("~/IntraGenomic-variability/data/illumina/lulu")
-system("cp ../dada2/default_pipeline/out/ASVs_taxo.fasta .")
-system("vsearch --usearch_global ASVs_taxo.fasta --db ASVs_taxo.fasta --self --id .84 --iddef 1 --userout match_list.txt -userfields query+target+id --maxaccepts 0 --query_cov .9 --maxhits 10")
 
 abun <- fread("ASVs_abun.tsv", sep="\t")
 simm <- fread("match_list.txt", sep="\t")
@@ -43,7 +40,6 @@ out$taxo <- fifelse(out$taxo=="Bacillariophyta", "Diatoms",
                               fifelse(out$taxo=="Labyrinthulomycetes", "Fungi", 
                                       fifelse(out$taxo=="Basidiomycota", "Fungi", 
                                               fifelse(grepl("Sphaerozoidae|Collosphaeridae|Collophidiidae", out$family), "Collodaria", out$taxo)))))
-
 
 file <- subset(out, class=="Polycystinea" & spread > 2 & total >= summary(out$total)[[3]])
 file <- subset(out, spread >= 2 & total >= 3)
