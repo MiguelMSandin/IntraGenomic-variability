@@ -1,4 +1,4 @@
-[[![Published in Environmental Microbiology](https://img.shields.io/badge/published%20in-Environmental%20Microbiology-blue.svg)](https://doi.org/10.1111/1462-2920.16081)
+[![Published in Environmental Microbiology](https://img.shields.io/badge/published%20in-Environmental%20Microbiology-blue.svg)](https://doi.org/10.1111/1462-2920.16081)
 
 # IntraGenomic-variability
   
