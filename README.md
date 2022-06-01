@@ -1,3 +1,5 @@
+[![Published in Environmental Microbiology](https://img.shields.io/badge/published%20in-Environmental%20Microbiology-blue.svg)]([https://doi.org/10.1101/gr.214270.116](https://doi.org/10.1111/1462-2920.16081))
+
 # IntraGenomic-variability
   
 This repository gathers all scripts, data and information needed to replicate the following study:  
