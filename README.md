@@ -24,7 +24,7 @@ Sandin MM, Romac S, Not F (2021) **Intra-genomic rDNA gene variability of Nassel
 - [Racon](https://github.com/isovic/racon)  
 - An alignment editor software, such as [aliview](https://ormbunkar.se/aliview/) or [seaview](http://doua.prabi.fr/software/seaview)  
 ### in-house dependencies
-Accessible in the [random](https://github.com/MiguelMSandin/random)) repository:  
+Accessible in the [random](https://github.com/MiguelMSandin/random) repository:  
 - [multi2linefasta.py](https://github.com/MiguelMSandin/random/blob/main/fasta/multi2linefasta.py)  
 - [fastaConcat.py](https://github.com/MiguelMSandin/random/blob/main/fasta/fastaConcat.py)  
 - [sequenceSelect.py](https://github.com/MiguelMSandin/random/blob/main/fasta/sequenceSelect.py)  
