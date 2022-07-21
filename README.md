@@ -34,7 +34,7 @@ Accessible in the [random](https://github.com/MiguelMSandin/random) repository:
 - [Rstudio](https://rstudio.com/products/rstudio/download/) 
   
 ## Structure of the repository
-The folder **scripts** contains all the scripts used for the analysis and plotting of the figures presented in the [study](https://doi.org/10.1101/2021.10.05.463214) mentioned above, estructured with subdirectories for each figure.  
+The folder **scripts** contains all the scripts used for the analysis and plotting of the figures presented in the [study](https://sfamjournals.onlinelibrary.wiley.com/doi/10.1111/1462-2920.16081) mentioned above, estructured with subdirectories for each figure.  
 Folder **data/info** contains the contextualized information in order to perform and analyze the raw data (e.g.; tags for demultiplexing), that can be permanently downloaded from figshare using the following DOI: https://doi.org/10.6084/m9.figshare.16922764. Raw sequencing results have also been deposited in SRA under the accession number: [PRJNA816840](https://www.ncbi.nlm.nih.gov/sra/PRJNA816840).  
   
 All scripts should be self-explained and ready to be run. Tested on a laptop Ubuntu 20.04, with 4 processors and 16 GB of RAM.  
