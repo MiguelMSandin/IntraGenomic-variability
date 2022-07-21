@@ -3,9 +3,7 @@
 # IntraGenomic-variability
   
 This repository gathers all scripts, data and information needed to replicate the following study:  
-Sandin MM, Romac S, Not F (2021) **Intra-genomic rDNA gene variability of Nassellaria and Spumellaria (Rhizaria, Radiolaria) assessed by Sanger, MinION and Illumina sequencing**. bioRxiv 2021.10.05.463214; doi: [doi.org/10.1101/2021.10.05.463214](https://doi.org/10.1101/2021.10.05.463214)
-
-*In press*: https://doi.org/10.1111/1462-2920.16081
+Sandin MM, Romac S, Not F (**2022**) Intra-genomic rRNA gene variability of Nassellaria and Spumellaria (Rhizaria, Radiolaria) assessed by Sanger, MinION and Illumina sequencing. *Environ Microbiol*. 24(7):2979-2993. doi: [10.1111/1462-2920.16081](https://sfamjournals.onlinelibrary.wiley.com/doi/10.1111/1462-2920.16081)  
   
 ## Dependencies
 - [python](https://www.python.org/)  
